@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TodoContext } from './TodoContext';
+import AddTodoForm from './AddTodoForm';
 
 const TodoList = () => {
   const { todos, updateTodoState, addTodo } = useContext(TodoContext);
@@ -45,17 +46,7 @@ const TodoList = () => {
   return (
     <div>
       <h1>Todo List</h1>
-      <form onSubmit={handleNewTodoSubmit}>
-        <label>
-          Title:
-          <input type="text" value={newTodoTitle} onChange={handleNewTodoTitleChange} />
-        </label>
-        <label>
-          Description:
-          <textarea value={newTodoDescription} onChange={handleNewTodoDescriptionChange} />
-        </label>
-        <button type="submit">Add Todo</button>
-      </form>
+      <AddTodoForm />
       <ol>
         {todos.map((todo) => ( <li
             key={todo.id}

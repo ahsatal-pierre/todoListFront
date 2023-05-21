@@ -11,7 +11,12 @@ export const TodoProvider = ({ children }) => {
   ]);
 
   const addTodo = (newTodo) => {
-    setTodos((prevTodos) => [newTodo, ...prevTodos]);
+    const newTodoWithId = {
+      id: todos.length + 1,
+      ...newTodo,
+    };
+
+    setTodos((prevTodos) => [newTodoWithId, ...prevTodos ]);
   };
 
   const updateTodoState = (todoId) => {
