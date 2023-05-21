@@ -1,11 +1,21 @@
 import React from 'react';
-// import TodoList from './TodoList';
-import AppRouter from './AppRouter';
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { TodoProvider } from './TodoContext';
+import TodoList from './TodoList';
+import TodoDetail from './TodoDetail';
 
-function App() {
-  return <AppRouter />
+const App = () => {
+  return (
+    <Router>
+      <TodoProvider>
+        <Routes>
+          <Route exact path="/" element={<TodoList />} />
+          <Route path="/todo/:id" element={<TodoDetail />} />
+        </Routes>
+      </TodoProvider>
+    </Router>
+  );
+};
 
-}
 
 export default App;

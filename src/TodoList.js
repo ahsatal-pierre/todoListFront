@@ -1,47 +1,61 @@
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { TodoContext } from './TodoContext';
 
 const TodoList = () => {
-const [todos, setTodos] = useState([
-  { id: 1, title: 'User job 1', state: 'pending', description: 'description job 1' },
-  { id: 2, title: 'User job 2', state: 'pending', description: 'description job 2' },
-  { id: 3, title: 'User job 3', state: 'pending', description: 'description job 3' },
-  { id: 4, title: 'User job 4', state: 'pending', description: 'description job 4' },
-  ]);
+  const { todos, updateTodoState, addTodo } = useContext(TodoContext);
+  const [newTodoTitle, setNewTodoTitle] = useState('');
+  const [newTodoDescription, setNewTodoDescription] = useState('');
 
-  // Change the state
+  const handleNewTodoSubmit = (event) => {
+    event.preventDefault();
+
+    if (newTodoTitle.trim() === '') {
+      alert('Todo title cannot be empty');
+      return;
+    }
+
+    const newTodo = {
+      id: todos.length + 1,
+      title: newTodoTitle,
+      state: 'pending',
+      description: newTodoDescription,
+    };
+  
+    addTodo(newTodo);
+
+    setNewTodoTitle('');
+    setNewTodoDescription('');
+  };
+
+
+  const handleNewTodoTitleChange = (event) => {
+    setNewTodoTitle(event.target.value);
+  };
+
+  const handleNewTodoDescriptionChange = (event) => {
+    setNewTodoDescription(event.target.value);
+  };
+
   const handleTodoStateChange = (todoId) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) => {
-        if (todo.id === todoId) {
-          return {
-            ...todo,
-            state: todo.state === 'pending' ? 'completed' : 'pending',
-          };
-        }
-        return todo;
-      });
-
-      //Separate todos by states
-      const completedTodos = updatedTodos.filter(
-        (todo) => todo.state === 'completed'
-      );
-      const pendingTodos = updatedTodos.filter(
-        (todo) => todo.state === 'pending'
-      );
-
-      // Sort by state and by id 
-      const sortedPendingTodos = [...pendingTodos].sort((a, b) => a.id - b.id);
-      const sortedCompletedTodos = [...completedTodos].sort((a, b) => a.id - b.id);
-
-      return [...sortedPendingTodos, ...sortedCompletedTodos];
-    });
+    updateTodoState(todoId);
   };
 
   return (
     <div>
       <h1>Todo List</h1>
+      <form onSubmit={handleNewTodoSubmit}>
+        <label>
+          Title:
+          <input type="text" value={newTodoTitle} onChange={handleNewTodoTitleChange} />
+        </label>
+        <label>
+          Description:
+          <textarea value={newTodoDescription} onChange={handleNewTodoDescriptionChange} />
+        </label>
+        <button type="submit">Add Todo</button>
+      </form>
       <ol>
         {todos.map((todo) => ( <li
             key={todo.id}
@@ -52,7 +66,9 @@ const [todos, setTodos] = useState([
               checked={todo.state === 'completed'}
               onChange={() => handleTodoStateChange(todo.id)}
             />
-            <Link to={`/todo/${todo.id}`} state={{description: todo.description, title: todo.title}}>{todo.title}</Link>
+                  <Link to={`/todo/${todo.id}`} state={{ description: todo.description, title: todo.title }}>
+              {todo.title}
+            </Link>
           </li>
         ))}
       </ol>
