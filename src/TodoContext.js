@@ -32,12 +32,18 @@ export const TodoProvider = ({ children }) => {
       });
 
       const sortedTodos = [...updatedTodos].sort((a, b) => {
-        if (a.state === 'completed' && b.state !== 'completed') {
-          return 1;
-        } else if (a.state !== 'completed' && b.state === 'completed') {
-          return -1;
+        if (a.state === 'pending' && b.state === 'pending') {
+          if (a.id > 4 && b.id > 4) {
+            return b.id - a.id; 
+          } else if (a.id <= 4 && b.id <= 4) {
+            return a.id - b.id; 
+          } else if (a.id > 4 && b.id <= 4) {
+            return -1; 
+          } else {
+            return 1; 
+          }
         } else {
-          return a.id - b.id;
+          return a.state === 'pending' ? -1 : 1; 
         }
       });
 
