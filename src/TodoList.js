@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const TodoList = () => {
 const [todos, setTodos] = useState([
-    { id: 1, title: 'User job 1', state: 'pending' },
-    { id: 2, title: 'User job 2', state: 'pending' },
-    { id: 3, title: 'User job 3', state: 'pending' },
-    { id: 4, title: 'User job 4', state: 'pending' },
+  { id: 1, title: 'User job 1', state: 'pending', description: 'description job 1' },
+  { id: 2, title: 'User job 2', state: 'pending', description: 'description job 2' },
+  { id: 3, title: 'User job 3', state: 'pending', description: 'description job 3' },
+  { id: 4, title: 'User job 4', state: 'pending', description: 'description job 4' },
   ]);
 
   // Change the state
@@ -51,7 +52,7 @@ const [todos, setTodos] = useState([
               checked={todo.state === 'completed'}
               onChange={() => handleTodoStateChange(todo.id)}
             />
-            {todo.title}
+            <Link to={`/todo/${todo.id}`} state={{description: todo.description, title: todo.title}}>{todo.title}</Link>
           </li>
         ))}
       </ol>
