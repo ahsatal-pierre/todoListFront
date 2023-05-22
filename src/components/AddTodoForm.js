@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TodoContext } from './TodoContext';
-import './index.css';
+import '../index.css';
 
 const AddTodoForm = () => {
   const { addTodo } = useContext(TodoContext);

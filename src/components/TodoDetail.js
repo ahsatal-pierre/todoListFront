@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import '../index.css';
 
 const TodoDetail = () => {
   const location = useLocation();
