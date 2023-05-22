@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { TodoContext } from './TodoContext';
 import AddTodoForm from './AddTodoForm';
 import Timer from './Timer';
-import './index.css';
+import '../index.css';
 
 const TodoList = () => {
   const { todos, updateTodoState, addTodo } = useContext(TodoContext);

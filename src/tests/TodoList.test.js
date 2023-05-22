@@ -1,8 +1,10 @@
+import '@testing-library/jest-dom';
+
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { TodoContext } from './TodoContext';
-import TodoList from './TodoList';
+import { TodoContext } from '../components/TodoContext';
+import TodoList from '../components/TodoList';
 
 describe('TodoList', () => {
  it('renders a list of todos', () => {

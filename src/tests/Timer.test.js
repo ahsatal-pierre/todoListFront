@@ -1,7 +1,11 @@
 /* eslint-disable testing-library/prefer-find-by */
+import '@testing-library/jest-dom';
+
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import Timer from './Timer';
+import { act } from 'react-dom/test-utils';
+
+import Timer from '../components/Timer';
 
 describe('Timer', () => {
  it('allows the user to set and start a countdown timer', async () => {
@@ -17,7 +21,9 @@ describe('Timer', () => {
 
  fireEvent.click(screen.getByText(/Start/i));
 
- jest.advanceTimersByTime(1000);
+ act(() => {
+    jest.advanceTimersByTime(1000);
+  });
 
  await waitFor(() => expect(screen.getByText(/01:30:14/i)).toBeInTheDocument());
 

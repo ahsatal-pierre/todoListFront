@@ -1,7 +1,10 @@
 /* eslint-disable testing-library/prefer-screen-queries */
+import '@testing-library/jest-dom';
+
 import React, { useContext } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import { TodoContext, TodoProvider } from './TodoContext';
+import { act } from 'react-dom/test-utils';
+import { TodoContext, TodoProvider } from '../components/TodoContext';
 
 const TestComponent = () => {
  const { todos, addTodo } = useContext(TodoContext);
@@ -30,7 +33,9 @@ describe('TodoContext', () => {
 
  expect(getAllByRole('listitem')).toHaveLength(4);
 
- getByText(/Add Todo/i).click();
+ act(() => {
+    getByText(/Add Todo/i).click();
+  });
 
  await waitFor(() => expect(getAllByRole('listitem')).toHaveLength(5));
  expect(getByText(/Test Todo/i)).toBeInTheDocument();
