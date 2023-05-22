@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { TodoContext } from './TodoContext';
 import AddTodoForm from './AddTodoForm';
 import Timer from './Timer';
+import './index.css';
 
 const TodoList = () => {
   const { todos, updateTodoState, addTodo } = useContext(TodoContext);
@@ -46,10 +47,10 @@ const TodoList = () => {
 
   return (
     <div>
-      <h1>Todo List</h1>
+      <h1 className='title'>Todo List</h1>
       <Timer />
       <AddTodoForm />
-      <ol>
+      <ol className='list'>
       {todos.map((todo) => (
   <li key={todo.id}>
     <Link

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TodoContext } from './TodoContext';
+import './index.css';
 
 const AddTodoForm = () => {
   const { addTodo } = useContext(TodoContext);
@@ -33,17 +34,17 @@ const AddTodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleNewTodoSubmit}>
-      <label>
-        Title:
-        <input type="text"  placeholder="Can't be empty" value={newTodoTitle} onChange={handleNewTodoTitleChange} />
-      </label>
-      <label>
-        Description:
-        <textarea value={newTodoDescription} onChange={handleNewTodoDescriptionChange} />
-      </label>
-      <button type="submit">Add Todo</button>
+    <div className='addingTodo'>
+       <div className='formTitle'>{"Add a new task: "}</div>  
+    <form className='formBox' onSubmit={handleNewTodoSubmit}>
+      <div className='form'>
+        <input className='boxTitle' type="text"  placeholder="TITLE required" value={newTodoTitle} onChange={handleNewTodoTitleChange} required />
+      
+        <textarea className='boxDetail' type="text" placeholder="Todo Details"value={newTodoDescription} onChange={handleNewTodoDescriptionChange} />
+        </div>
+      <button className='formButton' type="submit">Add this Todo</button>
     </form>
+    </div>
   );
 };
 
