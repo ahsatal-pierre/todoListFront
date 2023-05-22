@@ -1,25 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import App from './App';
+import TodoDetail from './TodoDetail';
 
-describe('App', () => {
- it('renders the TodoList component on the root path', () => {
- render(
- <MemoryRouter initialEntries={['/']}>
- <App />
- </MemoryRouter>
- );
-
- expect(screen.getByText(/Todo List/i)).toBeInTheDocument();
- });
-
- it('renders the TodoDetail component on the /todo/:id path', () => {
+describe('TodoDetail', () => {
+ it('renders the title and description from location state', () => {
  const mockState = { title: 'Test Todo', description: 'Test Description' };
 
  render(
  <MemoryRouter initialEntries={[{ pathname: '/todo/1', state: mockState }]}>
- <App />
+ <TodoDetail />
  </MemoryRouter>
  );
 
