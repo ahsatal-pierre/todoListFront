@@ -8,10 +8,10 @@ import '../index.css';
 
 const TodoList = () => {
   const { todos, updateTodoState, addTodo } = useContext(TodoContext);
-  const [newTodoTitle, setNewTodoTitle] = useState('');
-  const [newTodoDescription, setNewTodoDescription] = useState('');
+/*   const [newTodoTitle, setNewTodoTitle] = useState('');
+  const [newTodoDescription, setNewTodoDescription] = useState(''); */
 
-  const handleNewTodoSubmit = (event) => {
+/*   const handleNewTodoSubmit = (event) => {
     event.preventDefault();
 
     if (newTodoTitle.trim() === '') {
@@ -39,7 +39,7 @@ const TodoList = () => {
 
   const handleNewTodoDescriptionChange = (event) => {
     setNewTodoDescription(event.target.value);
-  };
+  }; */
 
   const handleTodoStateChange = (todoId) => {
     updateTodoState(todoId);
