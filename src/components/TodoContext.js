@@ -8,6 +8,7 @@ export const TodoProvider = ({ children }) => {
     { id: 2, title: 'User job 2', state: 'pending', description: 'description job 2' },
     { id: 3, title: 'User job 3', state: 'pending', description: 'description job 3' },
     { id: 4, title: 'User job 4', state: 'pending', description: 'description job 4' },
+  
   ]);
 
   const addTodo = (newTodo) => {

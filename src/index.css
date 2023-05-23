@@ -1,14 +1,18 @@
 
 
+ html, body {
+  background-color: #d2b824;
+  margin: 0;
+ }
  .title {
   text-align: center;
+  color: #08859C;
  }
 
+/* TIMER */
  .cadreTimer {
   margin: 10px;
- 
-  border: 1px solid black;
-
+  border: 3px solid #DCC818;
 }
 
 .timerClock {
@@ -31,6 +35,27 @@
   margin: 5px;
 }
 
+.goodJob {
+  margin: auto;
+  font-size: larger;
+  font-weight: bolder;
+  max-width: 10vw;
+  color: #08859C;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  border: 1px solid black;
+}
+
 .timerbutton {
   display: flex;
   justify-content: center;
@@ -43,6 +68,17 @@
   text-align: center;
   font-size: large;
   font-weight: 500;
+}
+
+/* FORM */
+.addingTodo {
+  margin: 10px;
+  border: 3px solid #DCC818;
+}
+
+.formBigBox {
+  
+  border: 3px solid #DCC818;
 }
 
 .formTitle {
@@ -63,6 +99,7 @@
   height: 15vh;
   width: 100%;
   border: 1px solid darkgrey;
+  text-align: center;
 }
 
 .form .boxTitle {
@@ -70,51 +107,138 @@
   width: 100%;
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid black;
+  /* border: 1px solid #DCC818; */
 }
 
 .form .boxDetail {
+  color: #000000;
   resize: none;
   padding: 0;
   height: 11vh;
   width: 100%;
-  border-width: 0;
+  border: transparent;
+  background-color: #d2b824;
 }
 
 .formButton {
   width: 100%;
-}
+  margin: 0;
 
-.list {
-  list-style-type: none;
-  text-align: center;
-  margin: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 0px;
+
 }
 
 
 
 input {
   text-align:center;
+  background-color: #d2b824;
 }
 
 ::-webkit-input-placeholder {
-
+  background-color: #d2b824;
   text-align: center;
 }
 :-moz-placeholder {
   /* Firefox 18- */
-
+  background-color: #d2b824;
   text-align: center;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
-
+  background-color: #d2b824;
   text-align: center;
 }
 :-ms-input-placeholder {
-
+  background-color: #d2b824;
   text-align: center;
+}
+
+.detailBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BUTTON */
+button{
+  display:inline-block;
+  padding:0.46em 1.6em;
+  border:0.1em solid #DCC818;
+  margin:0 0.2em 0.2em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color:#08859C;
+  text-align:center;
+  transition: all 0.15s;
+  }
+  button:hover{
+  text-shadow: 0 0 2em rgba(255,255,255,1);
+   background-color:#31A8FF; 
+   border-color:#000000; 
+  }
+  @media all and (max-width:30em){
+  button{
+  display:block;
+  margin:0.4em auto;
+  }
+  }
+
+
+/* LIST */
+.list {
+  list-style-type: none;
+  text-align: center;
+  /* margin: 40px; */
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 0px;
+}
+
+.overflow-scroll-gradient {
+  position: relative;
+}
+
+.overflow-scroll-gradient::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(transparent, rgb(0, 0, 0));
+  pointer-events: none;
+  
+}
+
+.overflow-scroll-gradient-scroller {
+  overflow-y: scroll;
+  background: #d2b824;
+  /* width: 240px; */
+  height: 200px; 
+  padding: 15px;
+  line-height: 1.2;
+}
+
+.overflow-scroll-gradient-scroller {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.overflow-scroll-gradient-scroller::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+
+@media screen and (min-width: 1024px) {
+  .title {
+    margin: 0;
+  }
+  .cadreTimer {
+   width: 60vw;
+    margin: auto;
+  }
 }

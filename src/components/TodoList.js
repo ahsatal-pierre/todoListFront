@@ -50,9 +50,10 @@ const TodoList = () => {
       <h1 className='title'>Todo List</h1>
       <Timer />
       <AddTodoForm />
-      <ol className='list'>
+      <div className="overflow-scroll-gradient">
+      <ol className='overflow-scroll-gradient-scroller list'>
       {todos.map((todo) => (
-  <li key={todo.id}>
+  <li className='' key={todo.id}>
     <Link
       to={`/todo/${todo.id}`}
       state={{ description: todo.description, title: todo.title }}
@@ -73,6 +74,7 @@ const TodoList = () => {
   </li>
 ))}
       </ol>
+      </div>
     </div>
   );
 };
