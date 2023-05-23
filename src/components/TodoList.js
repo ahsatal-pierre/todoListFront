@@ -8,38 +8,6 @@ import '../index.css';
 
 const TodoList = () => {
   const { todos, updateTodoState, addTodo } = useContext(TodoContext);
-/*   const [newTodoTitle, setNewTodoTitle] = useState('');
-  const [newTodoDescription, setNewTodoDescription] = useState(''); */
-
-/*   const handleNewTodoSubmit = (event) => {
-    event.preventDefault();
-
-    if (newTodoTitle.trim() === '') {
-      alert('Todo title cannot be empty');
-      return;
-    }
-
-    const newTodo = {
-      id: todos.length + 1,
-      title: newTodoTitle,
-      state: 'pending',
-      description: newTodoDescription,
-    };
-  
-    addTodo(newTodo);
-
-    setNewTodoTitle('');
-    setNewTodoDescription('');
-  };
-
-
-  const handleNewTodoTitleChange = (event) => {
-    setNewTodoTitle(event.target.value);
-  };
-
-  const handleNewTodoDescriptionChange = (event) => {
-    setNewTodoDescription(event.target.value);
-  }; */
 
   const handleTodoStateChange = (todoId) => {
     updateTodoState(todoId);
@@ -49,6 +17,9 @@ const TodoList = () => {
     <div>
       <h1 className='title'>Todo List</h1>
       <Timer />
+      <div className='footerComponent'>
+        <a className='footerLink' href='https://github.com/ahsatal-pierre/todo-app-Fullstack' rel="noopener" target="_blank">Link to the fullStack repository</a>
+      </div>
       <AddTodoForm />
       <div className="overflow-scroll-gradient">
       <ol className='overflow-scroll-gradient-scroller list'>
