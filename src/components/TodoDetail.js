@@ -12,7 +12,7 @@ const TodoDetail = () => {
   };
 
   return (
-    <div>
+    <div className='detailBox'>
       <h1>{title} Detail</h1>
       <p>{description}</p>
       <button onClick={handleGoBack}>Go Back</button>

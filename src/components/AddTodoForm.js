@@ -35,15 +35,17 @@ const AddTodoForm = () => {
 
   return (
     <div className='addingTodo'>
+      <div className='formBigBox'>
        <div className='formTitle'>{"Add a new task: "}</div>  
-    <form className='formBox' onSubmit={handleNewTodoSubmit}>
-      <div className='form'>
-        <input className='boxTitle' type="text"  placeholder="TITLE required" value={newTodoTitle} onChange={handleNewTodoTitleChange} required />
-      
-        <textarea className='boxDetail' type="text" placeholder="Todo Details"value={newTodoDescription} onChange={handleNewTodoDescriptionChange} />
+        <form className='formBox' onSubmit={handleNewTodoSubmit}>
+          <div className='form'>Title:
+            <input className='boxTitle' type="text"  placeholder="TITLE required" value={newTodoTitle} onChange={handleNewTodoTitleChange} required />
+            Details:
+            <textarea className='boxDetail' type="text" /* placeholder="Todo Details" */ value={newTodoDescription} onChange={handleNewTodoDescriptionChange} />
+       </div>
+          <button className='formButton' type="submit">Add this Todo</button>
+        </form>
         </div>
-      <button className='formButton' type="submit">Add this Todo</button>
-    </form>
     </div>
   );
 };
